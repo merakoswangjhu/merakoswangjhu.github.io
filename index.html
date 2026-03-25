@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis AI Platform - Robotics Infrastructure</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles for animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(3rem);
+            transition: all 1000ms cubic-bezier(0, 0, 0.2, 1);
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tab-content {
+            display: none;
+            animation: zoomIn 0.5s ease forwards;
+        }
+        .tab-content.active {
+            display: flex;
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* Custom Mask for Natural Blending */
+        .image-blend-mask {
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#060913] text-slate-300 font-sans selection:bg-green-500/30">
+
+    <!-- HERO SECTION (Title + Buttons + Teaser Cover) -->
+    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-start overflow-hidden px-6 pt-24 pb-20">
+        <!-- Dynamic Glow Background -->
+        <div id="glow-bg" class="pointer-events-none absolute inset-0 z-0 opacity-60" 
+             style="background: radial-gradient(800px circle at 50% 50%, rgba(74, 222, 128, 0.08), transparent 40%)">
+        </div>
+        
+        <!-- Grid Pattern -->
+        <div class="absolute inset-0 z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgwem0zOSAzOUgxVjFoMzh2MzhoMXptMCAwSDFWMWgzOHYzOHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMSkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')] opacity-30" style="mask-image: linear-gradient(to bottom, white, transparent); -webkit-mask-image: linear-gradient(to bottom, white, transparent);"></div>
+
+        <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center">
+            
+            <!-- Text Content -->
+            <div class="text-center space-y-8 max-w-5xl mx-auto">
+                <div class="fade-in" style="transition-delay: 100ms;">
+                    <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-green-800/50 bg-green-900/20 text-green-400 text-sm font-mono tracking-wide backdrop-blur-md shadow-[0_0_15px_rgba(74,222,128,0.1)]">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        Infrastructure for Scalable Robot Learning
+                    </div>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-100 mb-6 leading-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-emerald-400 to-teal-500 drop-shadow-lg">Axis AI Platform</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-slate-300 font-medium max-w-3xl mx-auto leading-relaxed">
+                        A Cross-Simulator, Cross-Machine Infrastructure for Scalable Teleoperation and Generalizable Robot Learning
+                    </h2>
+                </div>
+
+                <div class="fade-in" style="transition-delay: 200ms;">
+                    <div class="flex justify-center text-xl md:text-2xl font-semibold text-slate-100 mt-4 tracking-wide">
+                        Axis Robotics Team
+                    </div>
+                </div>
+
+                <!-- Action Buttons with Inline SVGs for bulletproof rendering -->
+                <div class="fade-in flex flex-wrap justify-center gap-4 pt-6 pb-8" style="transition-delay: 300ms;">
+                    <!-- Platform Button (Primary) -->
+                    <a href="https://hub.axisrobotics.ai/?tab=hub" class="flex items-center gap-2 bg-green-500 text-slate-950 px-7 py-3 rounded-full font-bold hover:bg-green-400 hover:scale-105 hover:shadow-[0_0_25px_rgba(74,222,128,0.5)] transition-all duration-300">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
+                        Platform
+                    </a>
+                    <!-- Paper Button -->
+                    <a href="https://roboverseorg.github.io/" class="flex items-center gap-2 bg-slate-100 text-slate-900 px-6 py-3 rounded-full font-semibold hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                        Paper (PDF)
+                    </a>
+                    <!-- GitHub Button -->
+                    <a href="https://github.com/axisrobotics" class="flex items-center gap-2 bg-slate-800/80 border border-slate-700 text-slate-200 px-6 py-3 rounded-full font-semibold backdrop-blur-md hover:bg-slate-800 hover:border-green-500/50 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] transition-all duration-300">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        GitHub
+                    </a>
+                    <!-- Video Button -->
+                    <a href="https://roboverseorg.github.io/" class="flex items-center gap-2 bg-slate-800/80 border border-slate-700 text-slate-200 px-6 py-3 rounded-full font-semibold backdrop-blur-md hover:bg-slate-800 hover:border-green-500/50 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] transition-all duration-300">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+                        Video
+                    </a>
+                </div>
+            </div>
+
+            <!-- TEASER COVER IMAGE (Naturally Blended) -->
+            <div class="fade-in relative w-full mt-4" style="transition-delay: 500ms;">
+                <div class="relative w-full group image-blend-mask">
+                    <!-- 底部的背景渐变，用于确保原图和 #060913 网站底色完美融合 -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent z-10 pointer-events-none"></div>
+                    
+                    <img src="teaser.png" alt="Axis AI Platform Architecture" 
+                         onerror="this.src='https://placehold.co/1200x600/060913/4ade80?text=Axis+AI+Platform+Teaser'" 
+                         class="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-[1.01]" />
+                </div>
+                <!-- 移出遮罩层的 Caption，确保文字清晰 -->
+                <p class="text-center text-slate-400 text-sm mt-2 font-mono max-w-4xl mx-auto relative z-20">
+                    Axis AI Platform: A unified infrastructure bridging web-based teleoperation, GPU-accelerated realistic augmentation, and sim-to-real deployment.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABSTRACT SECTION -->
+    <section class="py-24 px-6 bg-[#0B0F19] relative border-t border-slate-800/50 mt-12">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h2 class="text-3xl font-bold text-slate-100 mb-8 border-b border-slate-800 pb-4 flex items-center gap-3">
+                <div class="w-2 h-8 bg-green-400 rounded-full"></div>
+                Abstract
+            </h2>
+            <p class="text-lg leading-relaxed text-slate-300 mb-6">
+                Robotic learning systems increasingly rely on large-scale demonstration data and realistic simulation for training and evaluation. However, existing workflows are often fragmented across simulators, operating systems, and compute environments: lightweight simulators enable broad access for teleoperation but lack high-fidelity rendering and physics, while GPU-based simulation stacks enable realism but are expensive and restrictive to access.
+            </p>
+            <p class="text-lg leading-relaxed text-slate-300 mb-6">
+                We present <strong class="text-green-300 font-semibold">Axis AI Platform</strong>, a unified infrastructure that supports (i) multi-simulator development and execution, (ii) cross-machine orchestration spanning heterogeneous compute (web, Mac/Windows, and Linux GPU servers), and (iii) an end-to-end data pipeline from web-based teleoperation to photorealistic augmentation and downstream model training with sim-to-real deployment.
+            </p>
+            <p class="text-lg leading-relaxed text-slate-300">
+                In Axis AI Platform, users teleoperate robots directly in a browser via a MuJoCo WebAssembly frontend, producing demonstrations without specialized hardware or compute. Demonstrations are then uploaded in a unified trajectory format and replayed on GPU-based Linux servers to generate realistic, domain-randomized rollouts using an IsaacSim-based augmentation backend. We further provide two production pipelines: (1) data cleaning and trajectory refinement, and (2) model training and sim-to-real evaluation, enabling rapid iteration from data to real-world deployment.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- SYSTEM ARCHITECTURE (INTERACTIVE TABS) -->
+    <section class="py-24 px-6 bg-[#0B0F19]">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in">
+                <h2 class="text-3xl font-bold text-slate-100 mb-4 border-b border-slate-800 pb-4 flex items-center gap-3">
+                    <div class="w-2 h-8 bg-emerald-500 rounded-full"></div>
+                    Platform Architecture
+                </h2>
+                <p class="text-slate-400 mb-12 max-w-2xl">
+                    Explore the five interconnected modules that make up the Axis AI Platform infrastructure, bridging lightweight data collection with heavy-duty simulation.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Tabs Sidebar -->
+                <div class="w-full lg:w-1/3 flex flex-col gap-3">
+                    <!-- Tab 1 -->
+                    <button class="tab-btn active w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-800/80 border-green-500/50 shadow-[0_0_20px_rgba(74,222,128,0.1)]" data-target="teleop">
+                        <div class="tab-title flex items-center gap-3 font-semibold text-green-400">
+                            <i data-lucide="monitor-play" class="w-5 h-5"></i> Web-based Teleoperation
+                        </div>
+                        <p class="tab-desc text-sm text-slate-400 leading-relaxed mt-2">
+                            A browser-based MuJoCo WebAssembly (WASM) interface that runs on web/Mac/Windows without requiring GPUs or special software installation, enabling accessible cross-embodiment demonstration collection.
+                        </p>
+                    </button>
+                    <!-- Tab 2 -->
+                    <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="cleaning">
+                        <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
+                            <i data-lucide="filter" class="w-5 h-5"></i> Offline Data Cleaning
+                        </div>
+                        <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
+                            Unified trajectories undergo strict quality filtering, hesitation removal, Savitzky-Golay smoothing, and cubic spline resampling to eliminate teleop jitter and artifacts.
+                        </p>
+                    </button>
+                    <!-- Tab 3 -->
+                    <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="augmentation">
+                        <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
+                            <i data-lucide="box" class="w-5 h-5"></i> Realistic Augmentation
+                        </div>
+                        <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
+                            Cleaned trajectories are routed to an NVIDIA Isaac Sim backend for photorealistic rendering, domain randomization, and physics parameter variation at scale.
+                        </p>
+                    </button>
+                    <!-- Tab 4 -->
+                    <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="sim2real">
+                        <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
+                            <i data-lucide="layers" class="w-5 h-5"></i> Policy Learning & Sim2Real
+                        </div>
+                        <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
+                            The resulting augmented multi-modal dataset is used to train downstream VLA models, followed by rigorous sim-to-real transfer and real-world physical evaluation on the Franka arm.
+                        </p>
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="w-full lg:w-2/3 fade-in" style="transition-delay: 200ms;">
+                    <div class="relative h-full min-h-[400px] rounded-2xl border border-slate-800 bg-slate-900 flex items-center justify-center p-8 overflow-hidden group">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,222,128,0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div id="content-teleop" class="tab-content active w-full h-full flex-col items-center justify-center">
+                            <img src="web_framework_modified.png" alt="WASM UI" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                        </div>
+                        <div id="content-cleaning" class="tab-content w-full h-full flex-col items-center justify-center">
+                            <img src="https://placehold.co/800x500/0B0F19/4ade80?text=Trajectory+Smoothing+Pipeline" alt="Data Cleaning" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                        </div>
+                        <div id="content-augmentation" class="tab-content w-full h-full flex-col items-center justify-center">
+                            <img src="https://placehold.co/800x500/0B0F19/4ade80?text=Isaac+Sim+Photorealistic+Rendering" alt="Augmentation" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                        </div>
+                        <div id="content-sim2real" class="tab-content w-full h-full flex-col items-center justify-center">
+                            <img src="https://placehold.co/800x500/0B0F19/4ade80?text=Real-World+Hardware+Deployment" alt="Sim2Real" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUANTITATIVE EVALUATION -->
+    <section class="py-24 px-6 bg-[#060913]">
+        <div class="max-w-7xl mx-auto">
+            <div class="fade-in">
+                <h2 class="text-3xl font-bold text-slate-100 mb-6 text-center">Trajectory Optimization Validation</h2>
+                <p class="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
+                    Quantitative evaluation of trajectory optimization across LIBERO tasks. Our offline cleaning pipeline significantly reduces high-frequency artifacts (acceleration and jerk) from raw web-teleoperated data.
+                </p>
+            </div>
+
+            <div class="fade-in" style="transition-delay: 200ms;">
+                <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm shadow-xl">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-800/80 text-slate-200 border-b border-slate-700 text-sm font-mono uppercase tracking-wider">
+                                <th class="p-4 pl-6 font-semibold border-r border-slate-700/50 align-middle" rowspan="2">LIBERO Task</th>
+                                <th class="p-4 font-semibold text-center border-r border-slate-700/50 text-slate-400" colspan="2">Mean Acc. ↓</th>
+                                <th class="p-4 font-semibold text-center border-r border-slate-700/50 text-slate-400" colspan="2">Mean Jerk ↓</th>
+                                <th class="p-4 font-semibold text-center border-r border-slate-700/50 text-slate-400 align-middle" rowspan="2">Pos. Dev. (m)</th>
+                                <th class="p-4 font-semibold text-center text-slate-400 align-middle" rowspan="2">Removed Ratio</th>
+                            </tr>
+                            <tr class="bg-slate-800/40 text-slate-300 border-b border-slate-700 text-xs font-mono">
+                                <th class="p-3 text-center border-r border-slate-700/50 whitespace-nowrap">Before</th>
+                                <th class="p-3 text-center border-r border-slate-700/50 text-green-400 whitespace-nowrap">After (Ours)</th>
+                                <th class="p-3 text-center border-r border-slate-700/50 whitespace-nowrap">Before</th>
+                                <th class="p-3 text-center border-r border-slate-700/50 text-green-400 whitespace-nowrap">After (Ours)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-300 divide-y divide-slate-800/50">
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 1: Place Black Bowl on Top of cabinet</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.2458</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0738</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.6425</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.3363</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0235</td>
+                                <td class="p-4 text-center">6.46%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 2: Place Rear Butter in Cabinet Top Drawer and Close It</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.3067</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0943</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">3.7395</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.6208</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0654</td>
+                                <td class="p-4 text-center">5.73%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 3: Place the black bowl on the plate</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.3559</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1011</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">5.1358</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">2.3634</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0201</td>
+                                <td class="p-4 text-center">7.17%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 4: Place the black bowl on top of the cabinet</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.3225</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0859</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">4.6724</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">2.0785</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0142</td>
+                                <td class="p-4 text-center">3.77%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 5: Place the frying pan on the stove</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1832</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1055</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.4771</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.1374</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0106</td>
+                                <td class="p-4 text-center">1.24%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 6: Place the moka pot on the stove</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1819</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1090</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.5239</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.6784</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0064</td>
+                                <td class="p-4 text-center">1.94%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 7: Turn on the stove</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.2689</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1295</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">3.8291</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">2.3017</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0142</td>
+                                <td class="p-4 text-center">3.81%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 8: Close Cabinet Bottom Drawer</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1574</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0741</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">1.9118</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.6659</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0057</td>
+                                <td class="p-4 text-center">4.59%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 9: Place the black bowl into the cabinet’s bottom drawer</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1551</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0913</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">1.8665</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.3193</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0161</td>
+                                <td class="p-4 text-center">2.03%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 10: Place Wine Bottle on Wine Rack</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1841</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1114</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.0298</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.0022</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0625</td>
+                                <td class="p-4 text-center">4.86%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 11: Close Cabinet Top Drawer</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1224</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0683</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">1.5424</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.5822</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0053</td>
+                                <td class="p-4 text-center">2.62%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 12: Place the black bowl into the cabinet’s top drawer</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.2109</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1418</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.6997</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">2.1633</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0961</td>
+                                <td class="p-4 text-center">11.4%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 13: Place Black Bowl on Plate</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1682</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0816</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.2262</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.1552</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.2511</td>
+                                <td class="p-4 text-center">2.14%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 14: Place the black bowl on top of the cabinet</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1375</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.0736</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">1.8499</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.9924</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0108</td>
+                                <td class="p-4 text-center">6.73%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 15: Place the right moka pot on the stove</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.1890</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1130</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.5768</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.4929</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0134</td>
+                                <td class="p-4 text-center">3.19%</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm border-r border-slate-700/50">Task 16: Turn off the stove</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.2149</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">0.1213</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">2.8268</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-300 font-semibold">1.5823</td>
+                                <td class="p-4 text-center border-r border-slate-700/50">0.0219</td>
+                                <td class="p-4 text-center">8.93%</td>
+                            </tr>
+                            <tr class="bg-slate-800/50 hover:bg-slate-800/60 transition-colors">
+                                <td class="p-4 pl-6 font-mono text-sm font-semibold border-r border-slate-700/50 text-white">Average</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-white">0.2128</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-400 font-bold">0.0985</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-white">2.7844</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-green-400 font-bold">1.4670</td>
+                                <td class="p-4 text-center border-r border-slate-700/50 text-white font-bold">0.0398</td>
+                                <td class="p-4 text-center text-white font-bold">4.79%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CITATION SECTION -->
+    <section class="py-24 px-6 bg-[#0B0F19]">
+        <div class="max-w-7xl mx-auto fade-in">
+            <h2 class="text-3xl font-bold text-slate-100 mb-6 flex items-center justify-between">
+                BibTeX
+                <button id="copy-btn" class="flex items-center gap-2 text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-green-500/50 text-slate-300 hover:text-green-400 px-4 py-2 rounded-lg transition-all">
+                    <i id="copy-icon" data-lucide="copy" class="w-4 h-4"></i>
+                    <span id="copy-text">Copy Code</span>
+                </button>
+            </h2>
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl blur-xl transition-all duration-500 opacity-50 group-hover:opacity-100"></div>
+                <pre class="relative bg-[#060913] border border-slate-800 p-6 rounded-xl overflow-x-auto text-slate-400 font-mono text-sm leading-relaxed"><code id="bibtex-content">@article{axisrobotics2026,
+  title={Axis AI Platform: A Cross-Simulator, Cross-Machine Infrastructure for Scalable Teleoperation and Generalizable Robot Learning},
+  author={Axis Robotics Team},
+  journal={arXiv preprint},
+  year={2026}
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-6 border-t border-slate-800 bg-[#060913] text-center">
+        <p class="text-slate-500 text-sm">
+            © 2026 Axis Robotics Team.
+        </p>
+    </footer>
+
+    <!-- Scripts for interaction -->
+    <script>
+        // Initialize Lucide Icons for areas that don't strictly require immediate bulletproof rendering
+        lucide.createIcons();
+
+        // 1. Intersection Observer for FadeIn Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // 2. Mouse move effect for Hero Section
+        const hero = document.getElementById('hero');
+        const glowBg = document.getElementById('glow-bg');
+        
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            glowBg.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(74, 222, 128, 0.08), transparent 40%)`;
+        });
+
+        // 3. Tab switching logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset all buttons
+                tabBtns.forEach(b => {
+                    b.classList.remove('bg-slate-800/80', 'border-green-500/50', 'shadow-[0_0_20px_rgba(74,222,128,0.1)]');
+                    b.classList.add('bg-slate-900/40', 'border-slate-800', 'hover:bg-slate-800/40', 'hover:border-slate-700');
+                    b.querySelector('.tab-title').classList.remove('text-green-400');
+                    b.querySelector('.tab-title').classList.add('text-slate-300');
+                    b.querySelector('.tab-desc').classList.add('hidden');
+                });
+
+                // Set active button
+                btn.classList.add('bg-slate-800/80', 'border-green-500/50', 'shadow-[0_0_20px_rgba(74,222,128,0.1)]');
+                btn.classList.remove('bg-slate-900/40', 'border-slate-800', 'hover:bg-slate-800/40', 'hover:border-slate-700');
+                btn.querySelector('.tab-title').classList.remove('text-slate-300');
+                btn.querySelector('.tab-title').classList.add('text-green-400');
+                btn.querySelector('.tab-desc').classList.remove('hidden');
+
+                // Switch content
+                const targetId = btn.getAttribute('data-target');
+                tabContents.forEach(content => {
+                    if (content.id === `content-${targetId}`) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // 4. Copy BibTeX Logic
+        const copyBtn = document.getElementById('copy-btn');
+        const bibtexContent = document.getElementById('bibtex-content').innerText;
+        const copyIcon = document.getElementById('copy-icon');
+        const copyText = document.getElementById('copy-text');
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(bibtexContent).then(() => {
+                // Change icon to checkmark
+                copyIcon.setAttribute('data-lucide', 'check');
+                copyIcon.classList.replace('text-slate-300', 'text-green-400');
+                copyText.innerText = 'Copied!';
+                lucide.createIcons(); // re-render icon
+
+                setTimeout(() => {
+                    copyIcon.setAttribute('data-lucide', 'copy');
+                    copyIcon.classList.remove('text-green-400');
+                    copyText.innerText = 'Copy Code';
+                    lucide.createIcons();
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
