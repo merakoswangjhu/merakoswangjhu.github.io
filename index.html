@@ -27,7 +27,7 @@
             display: flex;
         }
         @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.95); }
+            from { opacity: 0; transform: scale(0.98); }
             to { opacity: 1; transform: scale(1); }
         }
         /* Custom Mask for Natural Blending */
@@ -80,19 +80,14 @@
                         Platform
                     </a>
                     <!-- Paper Button -->
-                    <a href="https://roboverseorg.github.io/" class="flex items-center gap-2 bg-slate-100 text-slate-900 px-6 py-3 rounded-full font-semibold hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300">
+                    <a href="./Axis_White_Paper.pdf" class="flex items-center gap-2 bg-slate-100 text-slate-900 px-6 py-3 rounded-full font-semibold hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
-                        Paper (PDF)
+                        Paper
                     </a>
                     <!-- GitHub Button -->
-                    <a href="https://github.com/axisrobotics" class="flex items-center gap-2 bg-slate-800/80 border border-slate-700 text-slate-200 px-6 py-3 rounded-full font-semibold backdrop-blur-md hover:bg-slate-800 hover:border-green-500/50 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] transition-all duration-300">
+                    <a href="https://github.com/AxisAIOrg" class="flex items-center gap-2 bg-slate-800/80 border border-slate-700 text-slate-200 px-6 py-3 rounded-full font-semibold backdrop-blur-md hover:bg-slate-800 hover:border-green-500/50 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] transition-all duration-300">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         GitHub
-                    </a>
-                    <!-- Video Button -->
-                    <a href="https://roboverseorg.github.io/" class="flex items-center gap-2 bg-slate-800/80 border border-slate-700 text-slate-200 px-6 py-3 rounded-full font-semibold backdrop-blur-md hover:bg-slate-800 hover:border-green-500/50 hover:text-green-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] transition-all duration-300">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>
-                        Video
                     </a>
                 </div>
             </div>
@@ -130,13 +125,27 @@
                 We present <strong class="text-green-300 font-semibold">Axis AI Platform</strong>, a unified infrastructure that supports (i) multi-simulator development and execution, (ii) cross-machine orchestration spanning heterogeneous compute (web, Mac/Windows, and Linux GPU servers), and (iii) an end-to-end data pipeline from web-based teleoperation to photorealistic augmentation and downstream model training with sim-to-real deployment.
             </p>
             <p class="text-lg leading-relaxed text-slate-300">
-                In Axis AI Platform, users teleoperate robots directly in a browser via a MuJoCo WebAssembly frontend, producing demonstrations without specialized hardware or compute. Demonstrations are then uploaded in a unified trajectory format and replayed on GPU-based Linux servers to generate realistic, domain-randomized rollouts using an IsaacSim-based augmentation backend. We further provide two production pipelines: (1) data cleaning and trajectory refinement, and (2) model training and sim-to-real evaluation, enabling rapid iteration from data to real-world deployment.
+                In <strong class="text-green-300 font-semibold">Axis AI Platform</strong>, users teleoperate robots directly in a browser via a MuJoCo WebAssembly frontend, producing demonstrations without specialized hardware or compute. Demonstrations are then uploaded in a unified trajectory format and replayed on GPU-based Linux servers to generate realistic, domain-randomized rollouts using an IsaacSim-based augmentation backend. We further provide two production pipelines: (1) data cleaning and trajectory refinement, and (2) model training and sim-to-real evaluation, enabling rapid iteration from data to real-world deployment.
             </p>
         </div>
     </section>
 
+    <!-- SYSTEM OVERVIEW (New Section) -->
+    <section class="py-24 px-6 bg-[#060913]">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in">
+                <h2 class="text-3xl font-bold text-slate-100 mb-12 text-center">System Overview</h2>
+            </div>
+            
+            <!-- Large Image Container for Overview - CLEAN PRESENTATION -->
+            <div class="fade-in relative mb-8" style="transition-delay: 100ms;">
+                <!-- 移除了遮罩层和 opacity 属性，换成极简的边框包裹 -->
+                <img src="./framework.png" alt="System Overview" class="w-full h-auto object-contain rounded-2xl border border-slate-800 bg-[#060913] shadow-lg p-1 sm:p-2" />
+            </div>
+        </div>
+    </section>
 
-    <!-- SYSTEM ARCHITECTURE (INTERACTIVE TABS) -->
+    <!-- PLATFORM ARCHITECTURE (INTERACTIVE TABS) -->
     <section class="py-24 px-6 bg-[#0B0F19]">
         <div class="max-w-6xl mx-auto">
             <div class="fade-in">
@@ -145,67 +154,108 @@
                     Platform Architecture
                 </h2>
                 <p class="text-slate-400 mb-12 max-w-2xl">
-                    Explore the five interconnected modules that make up the Axis AI Platform infrastructure, bridging lightweight data collection with heavy-duty simulation.
+                    Explore the interconnected modules that make up the Axis AI Platform infrastructure, bridging lightweight data collection with heavy-duty simulation.
                 </p>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12">
                 <!-- Tabs Sidebar -->
                 <div class="w-full lg:w-1/3 flex flex-col gap-3">
-                    <!-- Tab 1 -->
+                    <!-- Tab 1: Web-based Teleoperation -->
                     <button class="tab-btn active w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-800/80 border-green-500/50 shadow-[0_0_20px_rgba(74,222,128,0.1)]" data-target="teleop">
                         <div class="tab-title flex items-center gap-3 font-semibold text-green-400">
                             <i data-lucide="monitor-play" class="w-5 h-5"></i> Web-based Teleoperation
                         </div>
                         <p class="tab-desc text-sm text-slate-400 leading-relaxed mt-2">
-                            A browser-based MuJoCo WebAssembly (WASM) interface that runs on web/Mac/Windows without requiring GPUs or special software installation, enabling accessible cross-embodiment demonstration collection.
+                            A browser-based MuJoCo WebAssembly (WASM) interface that runs on web/Mac/Windows without requiring GPUs or special software installation.
                         </p>
                     </button>
-                    <!-- Tab 2 -->
+
+                    <!-- Tab 2: Task Generation (NEW) -->
+                    <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="taskgen">
+                        <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i> Task Generation
+                        </div>
+                        <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
+                            Automated synthesis of parameterized environments using LLMs and MuJoCo physics solvers, enabling scalable generation of diverse manipulation tasks.
+                        </p>
+                    </button>
+
+                    <!-- Tab 3: Data Cleaning -->
                     <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="cleaning">
                         <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
-                            <i data-lucide="filter" class="w-5 h-5"></i> Offline Data Cleaning
+                            <i data-lucide="filter" class="w-5 h-5"></i> Data Cleaning
                         </div>
                         <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
-                            Unified trajectories undergo strict quality filtering, hesitation removal, Savitzky-Golay smoothing, and cubic spline resampling to eliminate teleop jitter and artifacts.
+                            Unified trajectories undergo strict quality filtering, hesitation removal, Savitzky-Golay smoothing, and cubic spline resampling to eliminate teleop artifacts.
                         </p>
                     </button>
-                    <!-- Tab 3 -->
-                    <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="augmentation">
-                        <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
-                            <i data-lucide="box" class="w-5 h-5"></i> Realistic Augmentation
-                        </div>
-                        <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
-                            Cleaned trajectories are routed to an NVIDIA Isaac Sim backend for photorealistic rendering, domain randomization, and physics parameter variation at scale.
-                        </p>
-                    </button>
-                    <!-- Tab 4 -->
+                    
+                    <!-- Tab 4: Sim2Real -->
                     <button class="tab-btn w-full text-left p-6 rounded-xl border transition-all duration-300 flex flex-col gap-2 bg-slate-900/40 border-slate-800 hover:bg-slate-800/40 hover:border-slate-700" data-target="sim2real">
                         <div class="tab-title flex items-center gap-3 font-semibold text-slate-300">
-                            <i data-lucide="layers" class="w-5 h-5"></i> Policy Learning & Sim2Real
+                            <i data-lucide="layers" class="w-5 h-5"></i> Sim2Real
                         </div>
                         <p class="tab-desc hidden text-sm text-slate-400 leading-relaxed mt-2">
-                            The resulting augmented multi-modal dataset is used to train downstream VLA models, followed by rigorous sim-to-real transfer and real-world physical evaluation on the Franka arm.
+                            The resulting augmented dataset is used to train downstream VLA models, followed by rigorous sim-to-real transfer and real-world physical evaluation.
                         </p>
                     </button>
                 </div>
 
                 <!-- Content Area -->
                 <div class="w-full lg:w-2/3 fade-in" style="transition-delay: 200ms;">
-                    <div class="relative h-full min-h-[400px] rounded-2xl border border-slate-800 bg-slate-900 flex items-center justify-center p-8 overflow-hidden group">
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,222,128,0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div class="relative h-full min-h-[400px] flex items-center justify-center">
                         
+                        <!-- 1. Teleop Content -->
                         <div id="content-teleop" class="tab-content active w-full h-full flex-col items-center justify-center">
-                            <img src="web_framework_modified.png" alt="WASM UI" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                            <!-- Clean presentation: Image + rounded corner + subtle border -->
+                            <img src="web_framework_modified.png" alt="WASM UI" class="w-full h-auto object-contain rounded-xl border border-slate-800 bg-[#060913] shadow-md p-1">
                         </div>
+
+                        <!-- 2. Task Gen Content -->
+                        <div id="content-taskgen" class="tab-content w-full h-full flex-col items-center justify-center">
+                            <!-- Clean presentation: Image + rounded corner + subtle border -->
+                            <img src="./taskgen.png" alt="Task Generation" class="w-full h-auto object-contain rounded-xl border border-slate-800 bg-[#060913] shadow-md p-1">
+                        </div>
+
+                        <!-- 3. Data Cleaning Content (VIDEO SLIDER) -->
                         <div id="content-cleaning" class="tab-content w-full h-full flex-col items-center justify-center">
-                            <img src="https://placehold.co/800x500/0B0F19/4ade80?text=Trajectory+Smoothing+Pipeline" alt="Data Cleaning" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                            <!-- Video Comparison Container -->
+                            <div class="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden border border-slate-800 shadow-md select-none bg-black" id="video-compare-container">
+                                
+                                <!-- After Video (Base / Bottom Layer) -->
+                                <video id="video-after" src="./smoothed_and_resample.mp4" class="absolute top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline></video>
+                                
+                                <!-- Before Video (Top Layer, Clipped via JS) -->
+                                <video id="video-before" src="./resample_only.mp4" class="absolute top-0 left-0 w-full h-full object-cover z-10" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); filter: grayscale(100%);" autoplay loop muted playsinline></video>
+                                
+                                <!-- Slider Handle -->
+                                <div class="absolute top-0 bottom-0 w-[2px] bg-green-400 flex items-center justify-center z-20 pointer-events-none shadow-[0_0_10px_rgba(74,222,128,0.8)]" id="video-slider-handle" style="left: 50%;">
+                                    <div class="w-8 h-8 bg-slate-900 border-2 border-green-400 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(74,222,128,0.5)]">
+                                        <i data-lucide="chevrons-left-right" class="w-4 h-4 text-green-400"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Invisible Range Input (The actual control) -->
+                                <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30" id="video-slider">
+                                
+                                <!-- Labels -->
+                                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur border border-slate-700 text-slate-300 px-3 py-1.5 rounded-md text-sm font-mono shadow z-20 pointer-events-none">Resample Only</div>
+                                <div class="absolute top-4 right-4 bg-green-950/60 backdrop-blur border border-green-800/50 text-green-400 px-3 py-1.5 rounded-md text-sm font-mono shadow z-20 pointer-events-none">Smoothed & Resampled</div>
+                            </div>
+                            <p class="text-slate-400 text-sm mt-4 text-center font-mono">Drag the slider to compare Resample Only vs. Smoothed & Resampled trajectory.</p>
                         </div>
-                        <div id="content-augmentation" class="tab-content w-full h-full flex-col items-center justify-center">
-                            <img src="https://placehold.co/800x500/0B0F19/4ade80?text=Isaac+Sim+Photorealistic+Rendering" alt="Augmentation" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
-                        </div>
+
+                        <!-- 4. Sim2Real Content -->
                         <div id="content-sim2real" class="tab-content w-full h-full flex-col items-center justify-center">
-                            <img src="https://placehold.co/800x500/0B0F19/4ade80?text=Real-World+Hardware+Deployment" alt="Sim2Real" class="max-w-full max-h-full object-contain drop-shadow-[0_0_15px_rgba(74,222,128,0.2)] rounded-lg">
+                            <div class="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden border border-slate-800 shadow-md bg-black">
+                                <video src="./sim2real.mov" class="w-full h-full object-cover" autoplay loop muted playsinline></video>
+                                
+                                <!-- 5x Speed Badge -->
+                                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur border border-green-800/50 text-green-400 px-3 py-1.5 rounded-md text-sm font-mono font-bold shadow z-20 pointer-events-none flex items-center gap-2">
+                                    <i data-lucide="fast-forward" class="w-4 h-4"></i> 5x Speed
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -414,12 +464,15 @@
             </h2>
             <div class="relative group">
                 <div class="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl blur-xl transition-all duration-500 opacity-50 group-hover:opacity-100"></div>
-                <pre class="relative bg-[#060913] border border-slate-800 p-6 rounded-xl overflow-x-auto text-slate-400 font-mono text-sm leading-relaxed"><code id="bibtex-content">@article{axisrobotics2026,
-  title={Axis AI Platform: A Cross-Simulator, Cross-Machine Infrastructure for Scalable Teleoperation and Generalizable Robot Learning},
-  author={Axis Robotics Team},
-  journal={arXiv preprint},
-  year={2026}
-}</code></pre>
+                <pre class="relative bg-[#060913] border border-slate-800 p-6 rounded-xl overflow-x-auto text-slate-400 font-mono text-sm leading-relaxed"><code id="bibtex-content">@misc{AxisWebInfra,
+  author = {{AxisAIOrg}},
+  title = {AxisWebInfra},
+  year = {2026},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/AxisAIOrg/AxisWebInfra}},
+}
+</code></pre>
             </div>
         </div>
     </section>
@@ -499,7 +552,31 @@
             });
         });
 
-        // 4. Copy BibTeX Logic
+        // 4. Video Comparison Slider Logic
+        const videoSlider = document.getElementById('video-slider');
+        const videoBefore = document.getElementById('video-before');
+        const videoAfter = document.getElementById('video-after');
+        const videoSliderHandle = document.getElementById('video-slider-handle');
+
+        if (videoSlider && videoBefore && videoSliderHandle) {
+            // Update UI on slide
+            videoSlider.addEventListener('input', (e) => {
+                const val = e.target.value;
+                // Clip the top video based on slider percentage
+                videoBefore.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
+                videoSliderHandle.style.left = `${val}%`;
+            });
+
+            // Keep videos perfectly synced
+            if (videoAfter) {
+                videoAfter.addEventListener('play', () => videoBefore.play());
+                videoAfter.addEventListener('pause', () => videoBefore.pause());
+                videoAfter.addEventListener('seeking', () => { videoBefore.currentTime = videoAfter.currentTime; });
+                videoAfter.addEventListener('seeked', () => { videoBefore.currentTime = videoAfter.currentTime; });
+            }
+        }
+
+        // 5. Copy BibTeX Logic
         const copyBtn = document.getElementById('copy-btn');
         const bibtexContent = document.getElementById('bibtex-content').innerText;
         const copyIcon = document.getElementById('copy-icon');
